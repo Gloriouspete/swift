@@ -1,27 +1,12 @@
 "use client";
 import {
-  FaCoins,
-  FaFileInvoiceDollar,
-  FaPen,
-  FaRegIdCard,
   FaUser,
 } from "react-icons/fa";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { IoMdPeople } from "react-icons/io";
-
 import {
-  MdArrowBack,
-  MdArrowBackIos,
+
   MdArrowForwardIos,
-  MdDownload,
-  MdDelete,
-  MdHistory,
   MdLockOutline,
-  MdOutlinePrivacyTip,
-  MdOutlineSettings,
-  MdSettings,
-  MdVerified,
-  MdPhone,
+  
   MdMail,
   MdMoney,
   MdVerifiedUser,
