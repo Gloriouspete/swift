@@ -80,7 +80,8 @@ export default function Login() {
             />
           </div>
 
-          <div className="flex justify-end w-full h-auto px-3">
+          <div className="flex justify-around w-full h-auto px-3">
+          <p onClick={() => router("/register")} className="text-sm font-intermedium cursor-pointer ">Register?</p>
             <p onClick={() => setForgot(true)} className="text-sm font-intermedium cursor-pointer ">Forgot password?</p>
             </div>
           <div className="w-full flex items-center mt-14 px-4">

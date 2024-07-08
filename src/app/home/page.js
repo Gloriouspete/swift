@@ -7,8 +7,8 @@ export default function Home() {
   const [showSupport, setShowSupport] = useState(false);
   return (
     <>
-      <main className="bg-blue-500 w-screen h-screen flex items-center justify-center md:p-3">
-        <div className="w-full sm:w-2/3 lg:w-1/3 h-screen md:h-full bg-white relative">
+      <main className="bg-gray-900 w-screen h-screen flex items-center justify-center">
+        <div className="w-full sm:w-2/3 lg:w-1/3 h-screen md:h-full bg-white relative md:rounded-md">
           <span className="w-full border-b border-blue-500 h-auto flex py-2 px-2 justify-between">
             <p className="font-interbold text-lg">Chats</p>
             <img src="/logo.jpeg" className="w-8 h-8 rounded-sm" />

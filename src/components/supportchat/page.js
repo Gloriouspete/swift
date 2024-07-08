@@ -24,68 +24,7 @@ export default function Supportchat({ close }) {
   const [posterid, setPoster] = useState("");
   const [realsender, setSender] = useState("");
   const [load, setLoad] = useState(false);
-  const forumlist = [
-    {
-      id: 1,
-      forumid: "lifestyle",
-      message: "Where is your location",
-      type: "message",
-      sender: "2",
-      sendername: "Tundelola",
-      senderimage: "/backpack.png",
-      receiver: "1",
-      time: "2:30 am",
-      imageurl: "/backpack.png",
-    },
-    {
-      id: 2,
-      forumid: "business",
-      message: "Where is your location",
-      type: "image",
-      sender: "2",
-      sendername: "Tundelola",
-      senderimage: "/backpack.png",
-      receiver: "1",
-      time: "2:30 am",
-      imageurl: "/backpack.png",
-    },
-    {
-      id: 3,
-      forumid: "lifestyle",
-      message: "Where is your location",
-      type: "image",
-      sender: "2",
-      sendername: "Tundelola",
-      senderimage: "/backpack.png",
-      receiver: "1",
-      time: "2:30 am",
-      imageurl: "/backpack.png",
-    },
-    {
-      id: 1,
-      forumid: "lifestyle",
-      message: "Where is your location",
-      type: "image",
-      sender: "1",
-      sendername: "Tundelola",
-      senderimage: "/backpack.png",
-      receiver: "1",
-      time: "2:30 am",
-      imageurl: "/backpack.png",
-    },
-    {
-      id: 1,
-      forumid: "lifestyle",
-      message: "Hello group",
-      type: "message",
-      sender: "2",
-      sendername: "Tundelola",
-      senderimage: "/backpack.png",
-      receiver: "1",
-      time: "2:30 am",
-      imageurl: "/backpack.png",
-    },
-  ];
+ 
   const FetchData = async (id) => {
     setLoad(true);
     try {
@@ -108,7 +47,7 @@ export default function Supportchat({ close }) {
   return (
     <>
       <main className="w-screen h-screen min-h-full flex flex-col items-center fixed top-0 bottom-0 justify-center">
-        <main className="w-screen h-screen flex md:w-2/3 lg:w-1/3 md:h-4/5 bg-white">
+        <main className="w-screen h-screen flex md:w-2/3 lg:w-1/3 md:h-4/5 bg-white md:border md:rounded-md">
           <main className="w-full min-h-full h-auto flex flex-col  md:border-2 relative">
             <header className="w-full h-auto px-2 py-2 flex flex-col items-center justify-between border-b-[0.5px] dark:border-gray-500 bg-gray-900 ">
               <span className="w-full h-auto justify-end flex">

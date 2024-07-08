@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { MdDelete } from "react-icons/md";
-import Log from "./log.js";
+import {Log,Block} from "./log.js";
 import { IoMdCopy } from "react-icons/io";
 const userd =
   typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
@@ -37,10 +37,10 @@ export default function Chatoption({
 
   const Block = async () => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this message"
+      "Are you sure you want to block this user"
     );
     if (confirmed) {
-      const response = await Block(messageid.sender);
+      const response = await Block(messageid.sender,messageid.groupid);
       if (response) {
         deletemsg(messageid.id);
         alert("deleted");

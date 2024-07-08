@@ -114,7 +114,7 @@ export default function Viewprofile() {
         <main className="w-screen flex flex-col items-center min-h-screen md:min-h-max h-auto px-1 md:w-3/5 lg:w-2/5  rounded-md md:mt-4 bg-white lol:bg-gray-900 md:border">
           <header
             aria-label="profile header"
-            className="w-full h-10 flex justify-between items-center bg-blue-0 px-2 md:hidden"
+            className="w-full h-10 flex justify-between items-center bg-blue-0 px-2"
           >
             <span className="flex items-center">
               <MdArrowBackIos
