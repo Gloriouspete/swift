@@ -1,5 +1,5 @@
 "use client";
-import { FaCoins, FaPen } from "react-icons/fa";
+import { FaCoins, FaPen  } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import {
   MdArrowBack,
