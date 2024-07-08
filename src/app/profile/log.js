@@ -4,7 +4,7 @@ const token = typeof window !== "undefined" ? window.localStorage.getItem("token
 
 export const Fetchp = async () => {
   try {
-    const response = await axios.get("http://192.168.1.154:8080/api/v1/getuser", {
+    const response = await axios.get("https://swiftback.onrender.com/api/v1/getuser", {
       headers: {
         Authorization: token,
       },

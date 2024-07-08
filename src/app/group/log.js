@@ -1,7 +1,7 @@
 import axios from "axios";
-const url = "http://192.168.1.154:8080/api/v1/fetchgroupmsg";
-const groupurl = "http://192.168.1.154:8080/api/v1/getgroups";
-const fetchurl = "http://192.168.1.154:8080/api/v1/getuser";
+const url = "https://swiftback.onrender.com/api/v1/fetchgroupmsg";
+const groupurl = "https://swiftback.onrender.com/api/v1/getgroups";
+const fetchurl = "https://swiftback.onrender.com/api/v1/getuser";
 const token =
   typeof window !== "undefined" ? window.localStorage.getItem("token") : false;
 

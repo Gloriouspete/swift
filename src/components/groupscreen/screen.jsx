@@ -7,7 +7,7 @@ import { SaveImages } from "./log.js";
 import Loader from "../loader/loader.jsx";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { FiPaperclip } from "react-icons/fi";
-import Chatoption from "../forumoption/page.js";
+import Groupoption from "../forumoption/page.js";
 import useLongPress from "./press.js"
 
 const userd = typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
@@ -158,17 +158,8 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
                     <p className="">&nbsp;~&nbsp;</p>
                   </span>
                   <div
-                    onMouseDown={(e) => longPressProps.onMouseDown(e, item)}
-                    onTouchStart={(e) => longPressProps.onTouchStart(e, item)}
-                    onMouseUp={(e) => longPressProps.onMouseUp(e, item)}
-                    onMouseLeave={(e) => longPressProps.onMouseLeave(e, item)}
-                    onTouchEnd={(e) => longPressProps.onTouchEnd(e, item)}
-                    //onClick={(e) => handleLong(e, item)}
-                    onDoubleClick={(e) => handleLong(e, item)}
-                    onContextMenu={(e) => {
-                     e.preventDefault();
-                     handleLong(e, item)
-                    } }
+                    
+                    onClick={(e) => handleLong(e, item)}
                     className={`${
                       item.sender === userd ? "bg-mycolor rounded-tr-none" : "bg-slate-500 rounded-tl-none"
                     } min-w-20 rounded-[15px] w-auto h-auto min-h-10 px-3 py-3 mb-2`}
@@ -224,7 +215,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
      
       {loader && <Loader />}
       {option && (
-          <Chatoption
+          <Groupoption
             close={() => setOption(false)}
             xpos={x}
             ypos={y}

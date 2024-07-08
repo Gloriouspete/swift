@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://api.korakota.com/api/v1/deleteforummessage";
+const url = "https://swiftback.onrender.com/api/v1/deleteforummessage";
 const token =
   typeof window !== "undefined"
     ? window.localStorage.getItem("token")

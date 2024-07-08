@@ -17,7 +17,7 @@ import { SaveImages, Fetchp, Chat } from "./log.js";
 import Setmodal from "./setmodal.js";
 import Loader from "../../components/loader/loader.jsx";
 import { io } from "socket.io-client";
-const SERVER_URL = "http://192.168.1.154:8080";
+const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
 export default function Viewprofile() {
   const [searchparam, setsearchparam] = useSearchParams();

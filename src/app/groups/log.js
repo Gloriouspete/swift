@@ -5,7 +5,7 @@ export const Fetchp = async (username) => {
   const formData = new URLSearchParams()
   formData.append("username",username)
   try {
-    const response = await axios.post("http://192.168.1.154:8080/api/v1/fetchprofile",formData.toString(), {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/fetchprofile",formData.toString(), {
       headers: {
         Authorization: token,
       },
@@ -25,7 +25,7 @@ export const Grouplog = async (name,description,image) => {
   formData.append("description",description)
   formData.append("image",image)
   try {
-    const response = await axios.post("http://192.168.1.154:8080/api/v1/creategroup",formData.toString(), {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/creategroup",formData.toString(), {
       headers: {
         Authorization: token,
       },

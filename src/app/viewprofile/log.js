@@ -5,7 +5,7 @@ export const Fetchp = async (username) => {
   const formData = new URLSearchParams()
   formData.append("username",username)
   try {
-    const response = await axios.post("http://192.168.1.154:8080/api/v1/fetchprofile",formData.toString(), {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/fetchprofile",formData.toString(), {
       headers: {
         Authorization: token,
       },
@@ -24,7 +24,7 @@ export const Chat = async (name,friendid) => {
   formData.append("friendname",name)
   formData.append("friendid",friendid)
   try {
-    const response = await axios.post("http://192.168.1.154:8080/api/v1/createmsg",formData.toString(), {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/createmsg",formData.toString(), {
       headers: {
         Authorization: token,
       },
