@@ -1,5 +1,3 @@
-"use client";
-import { FaCoins, FaPen } from "react-icons/fa";
 
 import {
   MdArrowBack,
