@@ -107,7 +107,6 @@ export default function Chat() {
       if (data.sender !== userd) {
         setMsgArray((prevmessage) => [...prevmessage, data]);
       }
-      alert("received")
     });
 
     socket.on("readreceipt", (data) => {

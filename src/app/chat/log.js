@@ -2,10 +2,8 @@ import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/getmessages";
 const profileurl = "https://swiftback.onrender.com/api/v1/getads";
 const infourl = "https://swiftback.onrender.com/api/v1/retrievechats";
-const token =
-  typeof window !== "undefined"
-    ? window.localStorage.getItem("token")
-    : false;
+const token = window.localStorage.getItem("token")
+
 
 export async function Log(params) {
   try {

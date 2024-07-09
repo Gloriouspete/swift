@@ -1,5 +1,5 @@
 import axios from "axios";
-const token = typeof window !== "undefined" ? window.localStorage.getItem("token") : false;
+const token = window.localStorage.getItem("token")
 
 export const Fetchp = async (username) => {
   const formData = new URLSearchParams()

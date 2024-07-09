@@ -1,9 +1,6 @@
 import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/searchuser";
-const token =
-  typeof window !== "undefined"
-    ? window.localStorage.getItem("token")
-    : false;
+const token = window.localStorage.getItem("token");
 
 export async function Log(params) {
   try {
