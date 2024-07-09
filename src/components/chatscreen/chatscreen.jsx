@@ -165,7 +165,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
           </form>
           {emoji && (
             <span className="w-full block h-auto">
-              <EmojiPicker className="w-full h-40" onEmojiClick={(e) => setText(value => value + e.toString())} />
+              <EmojiPicker className="w-full h-40" onEmojiClick={(e) => setText(value => value.target.value + e.toString())} />
             </span>
           )}
         </div>
