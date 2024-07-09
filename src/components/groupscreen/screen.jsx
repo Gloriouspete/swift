@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { FaCamera, FaPaperPlane, FaPaperclip, FaPlane } from "react-icons/fa";
 import { timeAgo } from "../worker/page.js";
 import { TiWarning } from "react-icons/ti";
-import { MdCancel } from "react-icons/md";
+import { MdCancel, MdEmojiEmotions } from "react-icons/md";
 import { SaveImages } from "./log.js";
 import Loader from "../loader/loader.jsx";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { FiPaperclip } from "react-icons/fi";
 import Groupoption from "../forumoption/page.js";
 import useLongPress from "./press.js"
-
+import EmojiPicker from "emoji-picker-react";
 const userd = typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
 
 export default function GroupScreen({ submit, receivedData,optiondelete }) {
@@ -23,6 +23,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
   const [imageprop, setImageProp] = useState([]);
   const [option, setOption] = useState(false);
   const [report, setReport] = useState(false);
+  const [emoji, setEmoji] = useState(false);
   const [x, setX] = useState(53);
   const [y, setY] = useState(9);
   const [optionprop, setOptionprop] = useState(null);
@@ -199,7 +200,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
                 aria-multiline
                 placeholder="Input message to send"
               />
-              
+                <MdEmojiEmotions className="fill-yellow-500" size={18} onClick={() => setEmoji(prev => !prev)}/>
             </span>
 
             <div className="w-auto h-auto bg-slate-200 p-2 rounded-[40px] mx-2 ">
@@ -210,6 +211,11 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
               />
             </div>
           </form>
+          {emoji && (
+            <span className="w-full block h-auto">
+              <EmojiPicker className="w-full h-40" onEmojiClick={(e,emojiObject) => setText(value => value + emojiObject.emoji)} />
+            </span>
+          )}
         </div>
       </section>
      
