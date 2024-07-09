@@ -7,11 +7,6 @@ import { Location, Log, Profile } from "./log.js";
 import { io } from "socket.io-client";
 import SupportScreen from "../supportscreen/screen.jsx";
 import { MdCancel } from "react-icons/md";
-const userd =
-  typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
-const SERVER_URL = "http://localhost:8080";
-const socket = io(SERVER_URL);
-
 export default function Supportchat({ close }) {
   const router = useNavigate();
 

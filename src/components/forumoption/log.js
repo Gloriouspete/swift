@@ -1,10 +1,8 @@
 import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/deleteforummessage";
 const blockurl = "https://swiftback.onrender.com/api/v1/blockuser";
-const token =
-  typeof window !== "undefined"
-    ? window.localStorage.getItem("token")
-    : false;
+const token = window.localStorage.getItem("token")
+ 
 
 export async function Log(id) {
     const formData = new URLSearchParams()

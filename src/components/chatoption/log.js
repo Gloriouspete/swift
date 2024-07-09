@@ -1,10 +1,7 @@
 import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/deletemsg";
-const token =
-  typeof window !== "undefined"
-    ? window.localStorage.getItem("token")
-    : false;
-
+const token = window.localStorage.getItem("token")
+ 
 export default async function Log(id) {
     const formData = new URLSearchParams()
     formData.append('id', id)
