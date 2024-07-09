@@ -61,7 +61,7 @@ export default function Supportchat({ close }) {
                 />
               </span>
             </header>
-            <section className="w-full h-auto px-2 flex flex-col">
+            <section className="w-full h-auto px-2 flex flex-col overflow-x-auto overflow-y-auto">
               {msgArray.map((item, index) => {
                 return (
                   <div className="w-full h-auto flex border rounded-md p-2 my-2" onClick={() => router(`/viewprofile?user=${item.username}`)}>
