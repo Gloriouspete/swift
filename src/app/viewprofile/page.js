@@ -147,12 +147,7 @@ export default function Viewprofile() {
               <p className="text-md font-intermedium">Profile</p>
             </span>
             <button
-              onClick={() => {
-                localStorage.removeItem("token");
-                alert("logged out");
-                window.location.href = "/login";
-                router.refresh();
-              }}
+              onClick={() => handleBlock()}
               className="w-auto h-auto bg-red-600 text-white font-intermedium text-sm rounded-full px-3 py-1"
             >
               Block
