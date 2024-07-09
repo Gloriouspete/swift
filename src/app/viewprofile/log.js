@@ -37,3 +37,21 @@ export const Chat = async (name,friendid) => {
     throw error;
   }
 };
+
+export const Block = async (friendid) => {
+  const formData = new URLSearchParams()
+  formData.append("friendid",friendid)
+  try {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/block",formData.toString(), {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const mydata = response.data;
+   
+      return mydata;
+    
+  } catch (error) {
+    throw error;
+  }
+};

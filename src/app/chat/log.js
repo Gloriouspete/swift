@@ -20,6 +20,9 @@ export async function Log(params) {
     if (result.success) {
       return result.data;
     }
+    else {
+      alert(result.message)
+    }
   } catch (error) {
     throw error
   }

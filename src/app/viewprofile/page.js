@@ -13,8 +13,7 @@ import {
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { SaveImages, Fetchp, Chat } from "./log.js";
-import Setmodal from "./setmodal.js";
+import { Block, Fetchp, Chat } from "./log.js";
 import Loader from "../../components/loader/loader.jsx";
 import { io } from "socket.io-client";
 const SERVER_URL = "https://swiftback.onrender.com";
@@ -103,6 +102,29 @@ export default function Viewprofile() {
     }
   }
 
+  const handleBlock = async() => {
+    setLoad(true)
+    if(!userid){
+      alert("A required Input is missing, You are advised to reload the page")
+      return
+    }
+    try{
+      const response = await Block(userid);
+        alert(response.message)
+    }
+    catch(error){
+      if(error && error.message){
+        alert(error.message)
+      }
+      else{
+        alert("Try again later")
+      }
+    }
+    finally{
+      setLoad(false)
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -170,7 +192,7 @@ export default function Viewprofile() {
               <p className="text-sm font-intermedium">Chat</p>
           
             </span>
-            <span className="flex flex-col items-center">
+            <span className="flex flex-col items-center" onClick={() => handleBlock()}>
             <span className="bg-red-100 rounded-full w-auto h-auto flex items-center justify-center">
              <MdBlock size={25} className="fill-red-600 bg-red-100 rounded-full m-2" />
              </span>

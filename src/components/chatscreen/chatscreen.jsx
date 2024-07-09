@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { timeAgo } from "../worker/page";
 import { MdCancel } from "react-icons/md";
-import { SaveImages } from "./log.js";
 import Imagebox from "../imagebox/page.js";
 import Loader from "../loader/loader";
 import Chatoption from "../chatoption/page.js";

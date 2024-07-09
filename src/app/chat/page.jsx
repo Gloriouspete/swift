@@ -11,7 +11,7 @@ import { io } from "socket.io-client";
 import Connection from "./prop.js";
 const userd =
   typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
-const SERVER_URL = "http://192.168.1.154:8080";
+const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
 
 export default function Chat() {
