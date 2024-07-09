@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { timeAgo } from "../worker/page";
-import { MdCancel } from "react-icons/md";
+import { MdCancel, MdEmojiEmotions } from "react-icons/md";
 import Imagebox from "../imagebox/page.js";
 import Loader from "../loader/loader";
 import Chatoption from "../chatoption/page.js";
 import { IoCheckmarkDone, IoPaperPlaneOutline } from "react-icons/io5";
 import { FiPaperclip } from "react-icons/fi";
+import EmojiPicker from "emoji-picker-react";
 import { MsgDisplay, Warning } from "./prop.js";
 import useLongPress from "./press.js";
 const userd =
@@ -21,7 +22,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
   const [loader, setLoader] = useState(false);
   const [imageprop, setImageProp] = useState([]);
   const [option, setOption] = useState(false);
-  const [report, setReport] = useState(false);
+  const [emoji, setEmoji] = useState(false);
   const [x, setX] = useState(53);
   const [y, setY] = useState(9);
   const [optionprop, setOptionprop] = useState(null);
@@ -151,6 +152,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Type message"
               />
+              <MdEmojiEmotions className="" size={18} onClick={() => setEmoji(prev => !prev)}/>
             </span>
 
             <div className="w-auto h-auto border p-2 rounded-[40px] mx-2 bg-slate-200">
@@ -161,6 +163,11 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
               />
             </div>
           </form>
+          {emoji && (
+            <span className="w-full block h-auto">
+              <EmojiPicker className="w-full h-40" onEmojiClick={(e) => setText(value => value + e.toString())} />
+            </span>
+          )}
         </div>
         {option && (
           <Chatoption
