@@ -213,7 +213,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
           </form>
           {emoji && (
             <span className="w-full block h-auto">
-              <EmojiPicker className="w-full h-40" onEmojiClick={(e,emojiObject) => setText(value => value + emojiObject.emoji)} />
+              <EmojiPicker className="w-full h-40" onEmojiClick={(emojiObject) => setText(value => value + emojiObject.emoji)} />
             </span>
           )}
         </div>
