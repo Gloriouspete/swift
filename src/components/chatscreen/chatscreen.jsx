@@ -25,31 +25,14 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
   const [x, setX] = useState(53);
   const [y, setY] = useState(9);
   const [optionprop, setOptionprop] = useState(null);
-  const handleUpload = async () => {
-    setLoader(true);
-    try {
-      const response = await SaveImages(images);
-      const load = {
-        text: "",
-        imageurl: response,
-        type: "image",
-      };
-      submit(load);
-    } catch (error) {
-      alert("Error uploading Image");
-    } finally {
-      setLoader(false);
-    }
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (text === "" && selected === false) {
         return;
       }
-      if (selected) {
-        handleUpload();
-      }
+      
       if (text !== "") {
         const load = {
           text: text,
@@ -99,16 +82,6 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
     handleScroll();
   }, [receivedData, submit]);
 
-  useEffect(() => {
-    if (selected && imageurl.length < 1) {
-      setSelected(false);
-    }
-  }, [imageurl]);
-  const OpenImage = (prop) => {
-    const propArray = [prop];
-    setImageProp(propArray);
-    setOpenimage(true);
-  };
 
   const handleLong = (e, messager) => {
     const rect = e.target.getBoundingClientRect();
