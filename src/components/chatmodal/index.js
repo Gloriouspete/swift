@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 import Log from "./log.js"
-const userid =
-  typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userid = window.localStorage.getItem("userid");
 
 
 export default function Chatmodal () {

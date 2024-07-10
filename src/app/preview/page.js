@@ -14,7 +14,7 @@ function Preview() {
     <div className=" w-screen h-screen">
       <main className='w-full md:w-1/3 h-screen justify-center items-center flex'>
         <div className='w-auto h-auto'>
-          <img src='/logo.jpeg' className='h-40 w-40 animate-spin' />
+          <img src='/logo.jpeg' className='h-32 w-32 animate-spin' />
         </div>
       </main>
     </div>

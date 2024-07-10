@@ -17,6 +17,7 @@ export default async function Log() {
         return result.data
       }
   } catch (error) {
+   // alert("err")
     throw error
   }
 }

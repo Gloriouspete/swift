@@ -196,6 +196,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
               <textarea
                 value={text}
                 className="w-9/12 h-auto min-h-4 bg-transparent text-sm font-inter outline-none items-center flex flex-col dark:border-none"
+                onFocus={() => setEmoji(false)}
                 onChange={(e) => setText(e.target.value)}
                 aria-multiline
                 placeholder="Input message to send"

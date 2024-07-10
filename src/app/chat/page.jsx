@@ -9,8 +9,7 @@ import Loader from "../../components/loader/loader";
 import { Log, Profile,Info } from "./log.js";
 import { io } from "socket.io-client";
 import Connection from "./prop.js";
-const userd =
-  typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userd = window.localStorage.getItem("userid");
 const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
 
@@ -29,14 +28,13 @@ export default function Chat() {
   const [image, setImage] = useState("");
   const [name,setName] = useState("")
   const [report,setReport] = useState(false)
+
   const updateStatus = async (chated, realsendered) => {
-    setTimeout(() => {
       const updatedata = {
         roomid: chated,
         sender: realsendered,
       };
       socket.emit("readreceipt", updatedata);
-    }, 3000);
   };
   socket.on("message", (data) => {
     if (data.sender !== userd) {
@@ -51,8 +49,9 @@ export default function Chat() {
       const response = await Log(id);
       if (Array.isArray(response)) {
         setMsgArray(response);
-        //setImage(response.receiverimage)
-        updateStatus(id, response[0].sender);
+        if(response[response.length - 1].sender !== userd){
+          updateStatus(id, response[response.length - 1].sender);
+        }
       } else {
        // router.back()
       }
@@ -158,7 +157,7 @@ export default function Chat() {
           </span>
           <span
             className="flex px-2 flex-grow justify-start items-center"
-            onClick={() => router(`/viewprofile?user=${image}`)}
+            onClick={() => router(`/viewprofile?user=${otheruser}`)}
           >
             <img src="/emoticon.png" className="w-8 h-8 rounded-full mx-2" />
             <span className="">

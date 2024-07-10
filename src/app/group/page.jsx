@@ -9,10 +9,8 @@ import { Log, Profile,Groups } from "./log.js";
 import { io } from "socket.io-client";
 import GroupScreen from "../../components/groupscreen/screen.jsx";
 import { useNavigate } from "react-router-dom";
-const userd =
-  typeof window !== "undefined"
-    ? window.localStorage.getItem("userid")
-    : false;
+const userd = window.localStorage.getItem("userid")
+    
 const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
 

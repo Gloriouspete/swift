@@ -123,7 +123,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
                   <MsgDisplay item={item} />
                 </div>
                 <span className="flex justify-end min-h-4 h-auto w-full items-center">
-                  <p className="text-[12px] text-black dark:text-gray-100">
+                  <p className="text-[10px] text-black ">
                     {timeAgo(item.date)}
                   </p>
                   <IoCheckmarkDone
@@ -149,10 +149,11 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
               <textarea
                 value={text}
                 className="w-9/12 h-auto min-h-6 bg-transparent text-sm font-inter outline-none items-center justify-center ml-2 flex flex-col "
+                onFocus={() => setEmoji(false)}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Type message"
               />
-              <MdEmojiEmotions className="" size={18} onClick={() => setEmoji(prev => !prev)}/>
+              <MdEmojiEmotions className="fill-yellow-600" size={25} onClick={() => setEmoji(prev => !prev)}/>
             </span>
 
             <div className="w-auto h-auto border p-2 rounded-[40px] mx-2 bg-slate-200">

@@ -10,11 +10,23 @@ export default async function Log(username, password) {
     );
     const result = response.data;
     if (result.success) {
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("userid", result.userid);
+      await Store(result);
     }
     return result;
   } catch (error) {
     throw error?.response.data;
+  }
+}
+
+async function Store(data) {
+  const { token, userid } = data;
+  try {
+    Promise.resolve(
+      localStorage.setItem("token", token),
+      localStorage.setItem("userid", userid)
+    );
+    return true;
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -24,9 +24,10 @@ export default function Login() {
         alert(result.message);
         return;
       }
-      alert(result.message);
+     
       localStorage.setItem("token", result.token);
       localStorage.setItem("userid", result.userid);
+      alert(result.message);
       router('/home')
     } catch (error) {
       if(error && error.message){
