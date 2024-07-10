@@ -16,7 +16,7 @@ export const Log = async (displayname, username, email, password) => {
     });
    
     if (response.data.success === true) {
-      const result = await Store(response.data.token)
+      const result = await Store(response.data)
       if (result === 'success') {
         return response.data
       }
@@ -30,10 +30,11 @@ export const Log = async (displayname, username, email, password) => {
   }
 }
 
-export const Store = async (token) => {
+export const Store = async (data) => {
 
   try {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('userid', data.userid)
     return 'success'
   }
   catch (error) {
