@@ -10,9 +10,9 @@ import { FiPaperclip } from "react-icons/fi";
 import Groupoption from "../forumoption/page.js";
 import useLongPress from "./press.js"
 import EmojiPicker from "emoji-picker-react";
-const userd = typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userd =  window.localStorage.getItem("userid");
 
-export default function GroupScreen({ submit, receivedData,optiondelete }) {
+export default function GroupScreen({ submit, receivedData,optiondelete,blockuser }) {
   const fileInput = useRef(null);
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
@@ -228,6 +228,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete }) {
             ypos={y}
             messageid={optionprop === null ? {} : optionprop}
             deletemsg={(ide) => optiondelete(ide)}
+            blockuser={(ide) => blockuser(ide)}
           />
         )}
     </>

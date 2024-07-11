@@ -9,8 +9,7 @@ import { FiPaperclip } from "react-icons/fi";
 import EmojiPicker from "emoji-picker-react";
 import { MsgDisplay, Warning } from "./prop.js";
 import useLongPress from "./press.js";
-const userd =
-  typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userd = window.localStorage.getItem("userid");
 export default function ChatScreen({ submit, receivedData, optiondelete }) {
   const [text, setText] = useState("");
   const fileInput = useRef(null);
@@ -166,7 +165,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
           </form>
           {emoji && (
             <span className="w-full block h-auto">
-              <EmojiPicker className="w-full h-40" onEmojiClick={(emojiObject) => setText(value => value + emojiObject.emoji)} />
+              <EmojiPicker searchDisabled skinTonesDisabled className="w-full" height={250} onEmojiClick={(emojiObject) => setText(value => value + emojiObject.emoji)} />
             </span>
           )}
         </div>

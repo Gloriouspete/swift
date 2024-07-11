@@ -19,7 +19,6 @@ export default function Group() {
   const router = useNavigate();
   const [searchparam,setSearchparams] = useSearchParams();
   const [msgArray, setMsgArray] = useState([]);
-  const [myimage, setMyimage] = useState("/manphone.jpeg");
   const [myname, setname] = useState("User");
   const [forum, setforum] = useState("");
   const [members,setMembers] = useState([])
@@ -108,6 +107,10 @@ export default function Group() {
     const newArray = msgArray.filter((item) => item._id !== ide);
     setMsgArray(newArray);
   };
+  const blocker = (ide) => {
+    const newArray = msgArray.filter((item) => item.sender !== ide);
+    setMsgArray(newArray);
+  };
   const handleSubmit = async (data) => {
     const hydon = {
       groupid:forum,
@@ -145,6 +148,7 @@ export default function Group() {
           submit={(data) => handleSubmit(data)}
           receivedData={msgArray}
           optiondelete={(e) => deletemsg(e)}
+          blockuser={(e) => blocker(e)}
         />
       </main>
       </main>

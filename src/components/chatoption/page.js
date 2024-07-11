@@ -30,6 +30,7 @@ export default function Chatoption({
       if (response) {
         deletemsg(messageid._id);
         alert("deleted");
+        close()
       } else {
         alert("Unable to delete message");
       }

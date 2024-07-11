@@ -22,7 +22,7 @@ export async function Log(id) {
     throw error
   }
 }
-export async function Block(sender,groupid) {
+export async function Blocks(sender,groupid) {
   const formData = new URLSearchParams()
   formData.append('sender', sender)
   formData.append('groupid', groupid)
@@ -33,10 +33,8 @@ try {
       }
     })
     const result = response.data;
-   // console.log(result)
-    if(result.success === true){
-     return true
-    }
+     return result
+    
 } catch (error) {
   throw error
 }

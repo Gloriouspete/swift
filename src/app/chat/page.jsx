@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { timeAgo } from "../../components/worker/page.js";
-import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
+import { FaDotCircle } from "react-icons/fa";
 import { MdArrowBackIos } from "react-icons/md";
 import { useSearchParams,useNavigate } from "react-router-dom";
 import ChatScreen from "../../components/chatscreen/chatscreen.jsx";
@@ -18,16 +18,12 @@ export default function Chat() {
   const router = useNavigate();
   const [searchparam, setsearchparam] = useSearchParams();
   const [msgArray, setMsgArray] = useState([]);
-  const [advert, setAdvert] = useState("");
   const [chat, setChat] = useState("");
-  const [title, setTitle] = useState("");
-  const [posterid, setPoster] = useState("");
   const [otheruser, setOther] = useState("");
   const [price, setPrice] = useState("");
-  const [currency, setCurrency] = useState("");
+  const [online, setOnline] = useState(false);
   const [image, setImage] = useState("");
   const [name,setName] = useState("")
-  const [report,setReport] = useState(false)
 
   const updateStatus = async (chated, realsendered) => {
       const updatedata = {
@@ -41,10 +37,16 @@ export default function Chat() {
       setMsgArray((prevmessage) => [...prevmessage, data]);
     }
   });
+  socket.on("useronline", ({userid,online}) => {
+    //alert(userid)
+    if (userid !== userd) {
+      setOnline(online);
+    }
+  });
  
   const FetchData = async (id) => {
     setLoad(true)
-    await Connection(id)
+    await Connection(id,userd)
     try {
       const response = await Log(id);
       if (Array.isArray(response)) {
@@ -124,6 +126,19 @@ export default function Chat() {
   }, [socket, msgArray]);
 
   useEffect(() => {
+    socket.on("useronline", ({ userid, online }) => {
+      console.log(`User online: ${userid}`);
+
+      if (userid !== userd) {
+      setOnline(online);
+    }
+    });
+    return () => {
+      socket.off("useronline");
+    };
+  }, [socket, userd]);
+
+  useEffect(() => {
     search();
     updateStatus();
     socket.emit("connection", "love");
@@ -162,13 +177,16 @@ export default function Chat() {
             <img src="/emoticon.png" className="w-8 h-8 rounded-full mx-2" />
             <span className="">
               <p className="font-interbold text-center text-md">{name?.slice(0,14)}</p>
-              <p className="font-inter text-green-500 text-cente text-sm mx-">
-                {currency} {price}
+              <span className="flex items-center ">
+              <p className={` ${online ? "text-green-600" : "text-gray-500"} font-intermedium text-sm mr-1`}>
+                {online ? "online" : "offline"}
               </p>
+                <FaDotCircle size={10} className={`${online ? "fill-green-600" : "fill-gray-500"}`} />
+              </span>
             </span>
           </span>
           <span className="">
-            <BsThreeDotsVertical size={25} className="mx-1" onClick={() => setReport(true)} />
+          
           </span>
         </header>
         <ChatScreen

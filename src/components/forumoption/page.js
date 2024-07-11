@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { MdDelete } from "react-icons/md";
-import {Log,Block} from "./log.js";
+import {Log,Blocks} from "./log.js";
 import { IoMdCopy } from "react-icons/io";
-const userd =
-  typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userd =window.localStorage.getItem("userid");
 
 export default function Chatoption({
   close,
@@ -11,6 +10,7 @@ export default function Chatoption({
   ypos,
   messageid,
   deletemsg,
+  blockuser
 }) {
   const modalRef = useRef();
 
@@ -29,6 +29,7 @@ export default function Chatoption({
       if (response) {
         deletemsg(messageid._id);
         alert("deleted");
+        close()
       } else {
         alert("Unable to delete message");
       }
@@ -40,12 +41,13 @@ export default function Chatoption({
       "Are you sure you want to block this user"
     );
     if (confirmed) {
-      const response = await Block(messageid.sender,messageid.groupid);
-      if (response) {
-        deletemsg(messageid.id);
-        alert("deleted");
+      const response = await Blocks(messageid.sender,messageid.groupid);
+      if (response.success) {
+        blockuser(messageid.sender);
+        alert(response.message);
+        close()
       } else {
-        alert("Unable to delete message");
+        alert(response.message);
       }
     }
   };
@@ -56,6 +58,7 @@ export default function Chatoption({
     if (confirmed) {
       deletemsg(messageid._id);
       alert("deleted");
+      close()
     }
   };
 

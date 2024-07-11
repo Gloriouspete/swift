@@ -55,3 +55,20 @@ export const Block = async (friendid) => {
     throw error;
   }
 };
+export const Unblock = async (friendid) => {
+  const formData = new URLSearchParams()
+  formData.append("friendid",friendid)
+  try {
+    const response = await axios.post("https://swiftback.onrender.com/api/v1/unblock",formData.toString(), {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const mydata = response.data;
+   
+      return mydata;
+    
+  } catch (error) {
+    throw error;
+  }
+};

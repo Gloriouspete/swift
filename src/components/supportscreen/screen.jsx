@@ -11,7 +11,7 @@ import { FiPaperclip } from "react-icons/fi";
 import Chatoption from "../forumoption/page.js";
 import useLongPress from "./press.js"
 
-const userd = typeof window !== "undefined" ? window.localStorage.getItem("userid") : false;
+const userd =  window.localStorage.getItem("userid");
 
 export default function SupportScreen({ submit, receivedData,optiondelete }) {
   const fileInput = useRef(null);

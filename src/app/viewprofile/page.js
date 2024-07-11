@@ -13,11 +13,12 @@ import {
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { Block, Fetchp, Chat } from "./log.js";
+import { Block, Fetchp, Chat, Unblock } from "./log.js";
 import Loader from "../../components/loader/loader.jsx";
 import { io } from "socket.io-client";
 const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
+const userd = window.localStorage.getItem("userid")
 export default function Viewprofile() {
   const [searchparam, setsearchparam] = useSearchParams();
   const fileInput = useRef(null);
@@ -25,9 +26,9 @@ export default function Viewprofile() {
   const [imageurl, setImageurl] = useState("/emoticon.png");
   const [load, setLoad] = useState("");
   const [name, setName] = useState(`. . . . .`);
-  const [coin, setCoin] = useState(0);
   const [userid, setUserid] = useState("");
   const [username, setusername] = useState("");
+  const [blocked,setBlocked] = useState(false)
 
   const sendMessage = (data) => {
     console.log("got to send", data);
@@ -41,6 +42,7 @@ export default function Viewprofile() {
     socket.emit("message", hydon);
     console.log("got to send again", hydon);
   };
+  
 
   const fetchData = async () => {
     const queryValue = searchparam.get("user")
@@ -50,11 +52,13 @@ export default function Viewprofile() {
     setLoad(true);
     try {
       const response = await Fetchp(queryValue.toLowerCase().trim());
+      
       if (response.success) {
         const data = response.data;
         setName(`${data.displayname}`);
         setusername(data.username);
-        setUserid(data.userid)
+        setUserid(data.userid);
+        setBlocked(response.blocked);
       }
       else{
         router(-1)
@@ -125,6 +129,29 @@ export default function Viewprofile() {
     }
   }
 
+  const handleUnblock = async() => {
+    setLoad(true)
+    if(!userid){
+      alert("A required Input is missing, You are advised to reload the page")
+      return
+    }
+    try{
+      const response = await Unblock(userid);
+        alert(response.message)
+    }
+    catch(error){
+      if(error && error.message){
+        alert(error.message)
+      }
+      else{
+        alert("Try again later")
+      }
+    }
+    finally{
+      setLoad(false)
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -146,12 +173,22 @@ export default function Viewprofile() {
               />
               <p className="text-md font-intermedium">Profile</p>
             </span>
-            <button
+            {blocked ? (
+               <button
+               onClick={() => handleUnblock()}
+               className="w-auto h-auto bg-green-600 text-white font-intermedium text-sm rounded-full px-3 py-1"
+             >
+               Unblock
+             </button>
+            ) : (
+              <button
               onClick={() => handleBlock()}
               className="w-auto h-auto bg-red-600 text-white font-intermedium text-sm rounded-full px-3 py-1"
             >
               Block
             </button>
+            )}
+           
           </header>
 
           <div
@@ -187,12 +224,22 @@ export default function Viewprofile() {
               <p className="text-sm font-intermedium">Chat</p>
           
             </span>
-            <span className="flex flex-col items-center" onClick={() => handleBlock()}>
+            {blocked ? (
+              <span className="flex flex-col items-center" onClick={() => handleUnblock()}>
+            <span className="bg-red-100 rounded-full w-auto h-auto flex items-center justify-center">
+             <MdBlock size={25} className="fill-green-600 bg-red-100 rounded-full m-2" />
+             </span>
+             <p className="text-sm font-intermedium">Unblock</p>
+            </span>
+            ) : (
+              <span className="flex flex-col items-center" onClick={() => handleBlock()}>
             <span className="bg-red-100 rounded-full w-auto h-auto flex items-center justify-center">
              <MdBlock size={25} className="fill-red-600 bg-red-100 rounded-full m-2" />
              </span>
              <p className="text-sm font-intermedium">Block</p>
             </span>
+            )}
+            
 
           </div>
         </div>
