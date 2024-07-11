@@ -1,7 +1,5 @@
-"use client";
+//This is the group chat, Same as the chats
 import { useState, useEffect, Suspense } from "react";
-
-import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
 import { MdArrowBackIos } from "react-icons/md";
 import {useSearchParams } from "react-router-dom";
 import Loader from "../../components/loader/loader";
@@ -61,6 +59,7 @@ export default function Group() {
       }
       else{
        alert(response.message)
+       router(-1)
       }
     } catch (error) {
       //router()

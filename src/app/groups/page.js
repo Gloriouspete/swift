@@ -1,5 +1,5 @@
+//Groups is the one rendered by the browser when you click it, it shows all the groups youre currently in
 import { useState } from "react";
-
 import Footer from "../../components/footer/footer";
 import GroupChat from "../../components/groupchat/page";
 import Groupmodal from "../../components/groupmodal";

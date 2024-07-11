@@ -1,4 +1,4 @@
-"use client";
+//login page apparently
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Loader from "../../components/loader/loader";
@@ -11,7 +11,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [load,setLoad] = useState(false)
   const [showForgot,setForgot] = useState(false)
-  const [error, setError] = useState(false);
   const handleSubmit = async () => {
     const test = Test(username, password);
     if (!test) {

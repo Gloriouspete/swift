@@ -25,7 +25,7 @@ export default function Chatoption({
       "Are you sure you want to delete this message"
     );
     if (confirmed) {
-      const response = await Log(messageid.id);
+      const response = await Log(messageid._id);
       if (response) {
         deletemsg(messageid._id);
         alert("deleted");

@@ -1,4 +1,5 @@
-"use client";
+//This is the chat screen rendered by the browser
+
 import { useState, useEffect, Suspense } from "react";
 import { timeAgo } from "../../components/worker/page.js";
 import { FaDotCircle } from "react-icons/fa";
@@ -20,7 +21,6 @@ export default function Chat() {
   const [msgArray, setMsgArray] = useState([]);
   const [chat, setChat] = useState("");
   const [otheruser, setOther] = useState("");
-  const [price, setPrice] = useState("");
   const [online, setOnline] = useState(false);
   const [image, setImage] = useState("");
   const [name,setName] = useState("")
