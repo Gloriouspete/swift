@@ -52,14 +52,13 @@ export default function Chatmodal () {
                     secondid,
                     firstname,
                     secondname,
-                    deleted,
                     msg,
                     status,
                     date,
                   }) => (
                     <div
                       key={date}
-                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 ${deleted?.includes(userid)? "hidden" : "flex"} `}
+                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 `}
                       onClick={() =>
                         router(`/chat?id=${msg.chatid}`)
                       }
