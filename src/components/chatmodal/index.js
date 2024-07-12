@@ -20,6 +20,7 @@ export default function Chatmodal () {
       if (Array.isArray(response)) {
        // alert(response.length)
         setChatlist(response);
+        console.log(response);
       }
       else{
         alert("oga ao")
@@ -58,7 +59,7 @@ export default function Chatmodal () {
                   }) => (
                     <div
                       key={date}
-                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 ${deleted.includes(userid)? "hidden" : flex} `}
+                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 ${deleted?.includes(userid)? "hidden" : "flex"} `}
                       onClick={() =>
                         router(`/chat?id=${msg.chatid}`)
                       }
