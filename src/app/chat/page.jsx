@@ -185,8 +185,8 @@ export default function Chat() {
   return (
     <>
     <main className="w-screen h-screen flex flex-col items-center scrollbar-hide">
-    <main className="w-screen h-screen min-h-max flex bg-gray-900 justify-between scrollbar-hide">
-      <main className="w-screen min-h-max h-auto flex flex-col items-center lg:w-3/4 relative md:border overflow-x-auto scrollbar-hide bg-white">
+    <main className="w-screen h-screen min-h-max flex bg-gray-900 justify-center items-ceter scrollbar-hide">
+      <main className="w-screen min-h-max h-auto flex flex-col items-center lg:w-2/4 md:w-3/4 relative md:border overflow-x-auto scrollbar-hide bg-white">
         <header className="w-full h-auto px-2 py-2 flex items-center justify-between border-b absolute top-0 bg-white ">
           <span className="flex items-center md:hidden" onClick={() => router(-1)}>
             <MdArrowBackIos size={20} className="" />
@@ -207,7 +207,7 @@ export default function Chat() {
             </span>
           </span>
           <span className="flex w-auto h-auto">
-          <MdDelete className="fill-red-600 mx-2" size={16} onClick={() => handleChatDeletion()}/>
+          <MdDelete className="fill-red-600 mx-2 cursor-pointer" size={20} onClick={() => handleChatDeletion()}/>
           </span>
         </header>
         <ChatScreen
