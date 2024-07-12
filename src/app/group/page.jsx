@@ -164,9 +164,9 @@ export default function Group() {
              <p className="text-sm font-inter">{members.length || '....'} participant</p>
             </span>
           </div>
-          <span className="">
+          <span className="flex w-auto h-auto">
             { admin === userd && (
-              <MdDelete className="fill-red-600" size={16} onClick={() => handleGroupDeletion()}/>
+              <MdDelete className="fill-red-600 mx-2" size={16} onClick={() => handleGroupDeletion()}/>
             )}
           </span>
         </header>

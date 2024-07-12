@@ -181,7 +181,7 @@ export default function Chat() {
       }
     }
   }}
-  
+
   return (
     <>
     <main className="w-screen h-screen flex flex-col items-center scrollbar-hide">
@@ -206,8 +206,8 @@ export default function Chat() {
               </span>
             </span>
           </span>
-          <span className="">
-          <MdDelete className="fill-red-600" size={16} onClick={() => handleChatDeletion()}/>
+          <span className="flex w-auto h-auto">
+          <MdDelete className="fill-red-600 mx-2" size={16} onClick={() => handleChatDeletion()}/>
           </span>
         </header>
         <ChatScreen
