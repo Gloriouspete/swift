@@ -2,6 +2,7 @@ import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/getmessages";
 const profileurl = "https://swiftback.onrender.com/api/v1/getads";
 const infourl = "https://swiftback.onrender.com/api/v1/retrievechats";
+const deleteurl = "https://swiftback.onrender.com/api/v1/deletechat";
 const token = window.localStorage.getItem("token")
 
 
@@ -58,3 +59,20 @@ export async function Info(params) {
     throw error
   }
 };
+export async function Deletechat(params) {
+  try {
+    const formData = new URLSearchParams();
+    formData.append("chatid", params);
+    const response = axios.post(deleteurl, formData.toString(), {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const result = (await response).data;
+    return result;
+  } catch (error) {
+    if(error && error?.response.data){
+      throw error.response.data
+    }
+  }
+}

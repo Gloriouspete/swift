@@ -3,11 +3,11 @@
 import { useState, useEffect, Suspense } from "react";
 import { timeAgo } from "../../components/worker/page.js";
 import { FaDotCircle } from "react-icons/fa";
-import { MdArrowBackIos } from "react-icons/md";
+import { MdArrowBackIos, MdDelete } from "react-icons/md";
 import { useSearchParams,useNavigate } from "react-router-dom";
 import ChatScreen from "../../components/chatscreen/chatscreen.jsx";
 import Loader from "../../components/loader/loader";
-import { Log, Profile,Info } from "./log.js";
+import { Log, Profile,Info, Deletechat } from "./log.js";
 import { io } from "socket.io-client";
 import Connection from "./prop.js";
 const userd = window.localStorage.getItem("userid");
@@ -160,7 +160,28 @@ export default function Chat() {
     return;
   };
 
-
+  const handleChatDeletion = async() =>{
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this chat?, This action can't be reversed"
+    );
+    if (confirmed){
+    try{
+     const response = await Deletechat(chat)
+     if(response.success){
+      alert(response.message)
+      router(-1)
+     }
+     else{
+      alert(response.message)
+     }
+    }
+    catch(error){
+      if(error && error.message){
+        alert(error.message)
+      }
+    }
+  }}
+  
   return (
     <>
     <main className="w-screen h-screen flex flex-col items-center scrollbar-hide">
@@ -186,7 +207,7 @@ export default function Chat() {
             </span>
           </span>
           <span className="">
-          
+          <MdDelete className="fill-red-600" size={16} onClick={() => handleChatDeletion()}/>
           </span>
         </header>
         <ChatScreen

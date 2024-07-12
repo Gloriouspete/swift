@@ -2,6 +2,7 @@ import axios from "axios";
 const url = "https://swiftback.onrender.com/api/v1/fetchgroupmsg";
 const groupurl = "https://swiftback.onrender.com/api/v1/getgroups";
 const fetchurl = "https://swiftback.onrender.com/api/v1/getuser";
+const deleteurl = "https://swiftback.onrender.com/api/v1/deletegroup";
 const token = window.localStorage.getItem("token")
 
 export async function Log(params) {
@@ -47,5 +48,23 @@ export async function Groups(params) {
     return result;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function Deletegroup(params) {
+  try {
+    const formData = new URLSearchParams();
+    formData.append("groupid", params);
+    const response = axios.post(deleteurl, formData.toString(), {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const result = (await response).data;
+    return result;
+  } catch (error) {
+    if(error && error?.response.data){
+      throw error.response.data
+    }
   }
 }

@@ -1,9 +1,9 @@
 //This is the group chat, Same as the chats
 import { useState, useEffect, Suspense } from "react";
-import { MdArrowBackIos } from "react-icons/md";
+import { MdArrowBackIos, MdDelete } from "react-icons/md";
 import {useSearchParams } from "react-router-dom";
 import Loader from "../../components/loader/loader";
-import { Log, Profile,Groups } from "./log.js";
+import { Log, Profile,Groups, Deletegroup } from "./log.js";
 import { io } from "socket.io-client";
 import GroupScreen from "../../components/groupscreen/screen.jsx";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,6 @@ const SERVER_URL = "https://swiftback.onrender.com";
 const socket = io(SERVER_URL);
 
 export default function Group() {
-
   const router = useNavigate();
   const [searchparam,setSearchparams] = useSearchParams();
   const [msgArray, setMsgArray] = useState([]);
@@ -24,6 +23,7 @@ export default function Group() {
   const [groupimage,setGroupimage] = useState('')
   const [realsender,setSender] = useState('')
   const [load,setLoad] = useState(false)
+  const [admin,setAdmin]= useState('')
  
   const FetchData = async (id) => {
     setLoad(true)
@@ -52,10 +52,12 @@ export default function Group() {
       const response = await Groups(id)
       if(response.success){
         const mydata = response.data;
-        const {image,name,members} = mydata;
+        const {image,name,members,admin} = mydata;
         setTitle(name)
         setGroupimage(image)
         setMembers(members)
+        setAdmin(admin)
+
       }
       else{
        alert(response.message)
@@ -123,6 +125,29 @@ export default function Group() {
       return;
     
   };
+
+  const handleGroupDeletion = async() =>{
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this group, Action can't be reversed"
+    );
+    if (confirmed){
+    try{
+     const response = await Deletegroup(forum)
+     if(response.success){
+      alert(response.message)
+      router(-1)
+     }
+     else{
+      alert(response.message)
+     }
+    }
+    catch(error){
+      if(error && error.message){
+        alert(error.message)
+      }
+    }
+  }}
+
   return (
     <>
     <main className="w-screen h-screen min-h-full flex flex-col items-center">
@@ -140,7 +165,9 @@ export default function Group() {
             </span>
           </div>
           <span className="">
-            
+            { admin === userd && (
+              <MdDelete className="fill-red-600" size={16} onClick={() => handleGroupDeletion()}/>
+            )}
           </span>
         </header>
         <GroupScreen
