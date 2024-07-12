@@ -1,10 +1,8 @@
 "use client";
-
-import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
 import { timeAgo } from "../worker/page.js";
-import { MdArrowBackIos, MdBlock } from "react-icons/md";
+import { MdBlock } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,useState } from "react";
 
 import Log from "./log.js"
 const userid = window.localStorage.getItem("userid");
@@ -58,7 +56,7 @@ export default function Chatmodal () {
                   }) => (
                     <div
                       key={date}
-                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 `}
+                      className={`w-full h-auto border border-slate-300 px-2 items-center py-2 rounded-md cursor-pointer shadow-sm my-2 flex`}
                       onClick={() =>
                         router(`/chat?id=${msg.chatid}`)
                       }
@@ -71,7 +69,7 @@ export default function Chatmodal () {
                       </div>
 
                       <div className="flex-grow h-full bg-rd-500 flex-col flex justify-between select-none px-2">
-                        <span className="h-2/6 w-full flex justify-between px-2 items-center mb-1">
+                        <span className="h-2/6 w-full flex justify-between px-2 items-center mb-1 ">
                         <p className="font-intermedium text-sm whitespace-nowrap">
                         {check(firstid) ? secondname : firstname}
                           </p>
@@ -94,9 +92,7 @@ export default function Chatmodal () {
                           </span>
                           <span id="unread and time" className="flex flex-col justify-between">
                           
-                          <span id="dot" className={`h-2 w-2 rounded-full ${status === "seen" || firstid === userid ? " " : "bg-red-600"}`}>
-
-                          </span>
+                          
                           </span>
                          
                         </span>
@@ -120,14 +116,6 @@ export default function Chatmodal () {
     )
 };
 
-const changeIt = (text) => {
-    if(text || "iyh".startsWith("https://pics")){
-      return "🖼️"
-    }
-    else {
-      return text
-    }
-    }
     /*
 
     [

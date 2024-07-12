@@ -52,8 +52,9 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
     });
   }, []);
 
+ 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrolls = () => {
       const element = textref.current;
       if (element) {
         const rect = element.getBoundingClientRect();
@@ -64,14 +65,6 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [receivedData]);
-
-  useEffect(() => {
     const handleScroll = () => {
       const element = textref.current;
       if (element) {
@@ -80,6 +73,7 @@ export default function ChatScreen({ submit, receivedData, optiondelete }) {
       }
     };
     handleScroll();
+    handleScrolls()
   }, [receivedData, submit]);
 
 

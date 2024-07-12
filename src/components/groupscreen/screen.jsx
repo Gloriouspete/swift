@@ -71,8 +71,9 @@ export default function GroupScreen({ submit, receivedData,optiondelete,blockuse
       behavior: "smooth",
     });
   }, []);
+  
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrolls = () => {
       const element = textref.current;
       if (element) {
         const rect = element.getBoundingClientRect();
@@ -81,14 +82,6 @@ export default function GroupScreen({ submit, receivedData,optiondelete,blockuse
         }
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [receivedData]);
-  useEffect(() => {
     const handleScroll = () => {
       const element = textref.current;
       if (element) {
@@ -97,6 +90,7 @@ export default function GroupScreen({ submit, receivedData,optiondelete,blockuse
       }
     };
     handleScroll();
+    handleScrolls();
   }, [receivedData, submit]);
 
 

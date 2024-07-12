@@ -1,7 +1,6 @@
 //This is the chat screen rendered by the browser
 
-import { useState, useEffect, Suspense } from "react";
-import { timeAgo } from "../../components/worker/page.js";
+import { useState, useEffect} from "react";
 import { FaDotCircle } from "react-icons/fa";
 import { MdArrowBackIos, MdDelete } from "react-icons/md";
 import { useSearchParams,useNavigate } from "react-router-dom";
